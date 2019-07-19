@@ -1,0 +1,44 @@
+.el-table {
+  .thead {
+    color: #666;
+  }
+
+  th.is-leaf,
+  td {
+    border-bottom: none;
+  }
+
+  th {
+    background: #EEE;
+
+    // 消除 ElementUI原本的设定
+    // .el-table th > .cell { display: inline-block }
+    // 带来的底部空白
+
+    // TODO 嵌套 popover时高度不对
+    &.is-leaf {
+      font-size: 0;
+      font-weight: 400;
+    }
+  }
+
+  .el-table__row {
+    box-shadow: inset 0 -1px 1px #EEE;
+  }
+
+  .cell {
+    padding-left: 15px;
+    padding-right: 15px;
+    line-height: 20px;
+    font-size: 14px;
+  }
+}
+
+.el-table__empty-block {
+  min-height: 88px;
+}
+
+.el-table__empty-text {
+  font-size: 24px;
+  color: #999;
+}

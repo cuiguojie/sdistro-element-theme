@@ -2,6 +2,8 @@
 import { configure } from '@storybook/vue';
 import '../element';
 
+import '@/index.scss';
+
 const req = require.context('../../stories', true, /.stories.js$/);
 
 function loadStories() {

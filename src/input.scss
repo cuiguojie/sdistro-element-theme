@@ -1,0 +1,45 @@
+.el-input__inner,
+.el-textarea__inner {
+  font-size: 14px;
+  color: #333;
+  border-color: #DDD;
+  border-radius: 4px;
+
+  &:focus {
+    border-color: $blue;
+  }
+}
+
+.el-input__inner {
+  padding: 0 8px;
+  height: 32px;
+  line-height: 32px;
+}
+
+.el-textarea__inner {
+  padding: 3px 8px;
+  height: 80px;
+  line-height: 24px;
+}
+
+.el-input__suffix {
+  right: 8px;
+}
+
+.el-input__icon {
+  width: 20px;
+  line-height: 32px;
+}
+
+.el-input-group__prepend {
+  padding: 0 8px;
+  color: #CCC;
+  border-color: #DDD;
+  background: #FAFAFA;
+}
+
+.el-input.is-disabled .el-input__inner {
+  background-color: #EEE;
+  border-color: #DDD;
+  color: #333;
+}

@@ -1,0 +1,21 @@
+.el-popover {
+  padding: 8px 0;
+  min-width: 88px;
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.08);
+  border-radius: 0;
+}
+
+.el-popper[x-placement^="bottom"] {
+  margin-top: 8px;
+}
+
+.el-popper[x-placement^="top"] {
+  margin-bottom: 8px;
+}
+
+.el-popover--plain {
+  padding: 4px 8px;
+  line-height: 22px;
+  color: #333;
+  font-size: 12px;
+}
