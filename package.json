@@ -1,11 +1,23 @@
 {
   "name": "sdistro-element-theme",
   "version": "0.1.0",
+  "description": "星球发行自定义 ElementUI 皮肤",
+  "main": "src/index.scss",
   "private": false,
   "scripts": {
     "storybook:build": "vue-cli-service storybook:build -c config/storybook",
     "storybook:serve": "vue-cli-service storybook:serve -p 6006 -c config/storybook"
   },
+  "author": "cuiguojie@me.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cuiguojie/sdistro-element-theme.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cuiguojie/sdistro-element-theme/issues"
+  },
+  "homepage": "https://github.com/cuiguojie/sdistro-element-theme#readme",
   "devDependencies": {
     "@storybook/addon-actions": "^4.1.0 || ^5.0.0",
     "@storybook/addon-knobs": "^4.1.0 || ^5.0.0",
