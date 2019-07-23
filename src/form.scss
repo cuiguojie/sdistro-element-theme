@@ -1,0 +1,88 @@
+.el-form {
+  .sd-form__error-message {
+    display: none;
+  }
+}
+
+.el-form-item {
+  margin-bottom: 24px;
+
+  &.is-error {
+    .el-input__inner {
+      border: 1px solid #FF6E69;
+      background: rgba(255, 110, 105, .08);
+    }
+
+    .el-form-item__error {
+      position: relative;
+      margin-top: 8px;
+      padding: 0 0 0 16px;
+      line-height: 24px;
+      font-size: 14px;
+      color: #FF6E69;
+
+      &:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 8px;
+        width: 8px;
+        height: 8px;
+        background: #FF6E69;
+        border-radius: 2px;
+        overflow: hidden;
+      }
+    }
+  }
+}
+
+.el-form-item__label,
+.el-form-item__content {
+  line-height: 24px;
+}
+
+.el-form-item__label {
+  padding: 6px 32px 6px 0;
+  color: #333;
+  font-weight: 600;
+}
+
+.el-form--label-top {
+  .el-form-item__label {
+    padding-bottom: 8px;
+  }
+
+  textarea {
+    vertical-align: top; // fix bottom-space bug
+  }
+}
+
+// ElFormItem require 星花位置
+.el-form-item.is-required:not(.is-no-asterisk) .el-form-item__label-wrap > .el-form-item__label:before,
+.el-form-item.is-required:not(.is-no-asterisk) > .el-form-item__label:before {
+  display: none;
+}
+
+.el-form-item.is-required:not(.is-no-asterisk) .el-form-item__label-wrap > .el-form-item__label:after,
+.el-form-item.is-required:not(.is-no-asterisk) > .el-form-item__label:after {
+  content: "*";
+  margin-left: 3px;
+  color: $blue;
+}
+
+// 自定义部分，考虑摘出
+.sd-form-tips {
+  margin-top: 8px;
+  color: #333;
+}
+
+.sd-form-item--more {
+  &:after {
+    content: "";
+    display: table;
+    height: 0;
+    clear: both;
+  }
+
+  margin-top: 8px;
+}

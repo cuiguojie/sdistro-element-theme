@@ -1,0 +1,39 @@
+.el-tabs__header {
+  margin-bottom: 40px;
+}
+
+.el-tabs__nav-wrap:after {
+  height: 1px;
+  color: #EEE;
+}
+
+.el-tabs .el-tabs__header .el-tabs__nav {
+  .el-tabs__active-bar {
+    display: none;
+  }
+
+  .el-tabs__item {
+    position: relative;
+    margin-right: 24px;
+    padding: 0;
+    height: 48px;
+    line-height: 24px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+
+    &.is-active {
+      color: $blue;
+
+      &:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 2px;
+        background: $blue;
+      }
+    }
+  }
+}

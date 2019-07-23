@@ -6,58 +6,8 @@ import { storiesOf } from '@storybook/vue';
 // import StoryRouter from 'storybook-vue-router';
 // import store from '@/store';
 
-storiesOf('ElementUI|Form', module)
-  .add('Input', () => ({
-    data() {
-      return {
-        text: '',
-        password: '',
-        disabled: '已输入内容',
-        textarea: '',
-        prepend: '',
-      };
-    },
-    template: `
-      <ElForm label-position="top">
-        <ElFormItem label="默认">
-          <ElInput
-            placeholder="请输入内容"
-            v-model="text"
-          />
-        </ElFormItem>
-        <ElFormItem label="密码输入框">
-          <ElInput
-            type="password"
-            placeholder="请输入密码"
-            v-model="password"
-          />
-        </ElFormItem>
-        <ElFormItem label="禁用状态">
-          <ElInput
-            :disabled="true"
-            placeholder="请输入内容"
-            v-model="disabled"
-          />
-        </ElFormItem>
-        <ElFormItem label="文本域">
-          <ElInput
-            type="textarea"
-            placeholder="请输入内容"
-            v-model="textarea"
-          />
-        </ElFormItem>
-        <ElFormItem label="复合输入框">
-          <ElInput
-            placeholder="请输入内容"
-            v-model="prepend"
-          >
-            <template slot="prepend">Https://</template>
-          </ElInput>
-        </ElFormItem>
-      </ElForm>
-    `,
-  }))
-  .add('Radio', () => ({
+storiesOf('Form', module)
+  .add('Radio 单选框', () => ({
     data() {
       return {
         isChecked: 1,
@@ -65,6 +15,10 @@ storiesOf('ElementUI|Form', module)
     },
     template: `
       <ElForm label-position="top">
+        <ElFormItem label="使用说明">
+          <p class="sd-form-tips">固定样式，<strong>不接受</strong> Element-UI 中的 <code>size</code> 参数</p>
+        </ElFormItem>
+
         <ElFormItem label="单选框组">
           <ElRadioGroup
             v-model="isChecked"
@@ -85,8 +39,30 @@ storiesOf('ElementUI|Form', module)
               版权代理机构
             </ElRadio>
           </ElRadioGroup>
-          <p class="sd-form-tips">注：没有做多行样式，一般情况下选项过多应该使用 Select 组件</p>
+          <p class="sd-form-tips">注：没有考虑选项过多情况下的纵向排版，一般情况下多选项应使用 Select 组件</p>
         </ElFormItem>
+
+        <ElFormItem label="禁用状态">
+          <ElRadio
+            :label="1"
+            disabled
+          >
+            唱片公司或厂牌
+          </ElRadio>
+          <ElRadio
+            :label="2"
+            disabled
+          >
+            个人工作室
+          </ElRadio>
+          <ElRadio
+            :label="3"
+            disabled
+          >
+            版权代理机构
+          </ElRadio>
+        </ElFormItem>
+
         <ElFormItem label="按钮样式">
           <ElRadioGroup
             v-model="isChecked"
@@ -111,26 +87,114 @@ storiesOf('ElementUI|Form', module)
       </ElForm>
     `,
   }))
-  .add('Checkbox', () => ({
+  .add('Checkbox 多选框', () => ({
     data() {
       return {
-        isChecked: false,
+        checkbox1: false,
+        checkbox2: false,
+        checklist: [],
       };
     },
     template: `
       <ElForm label-position="top">
-        <ElFormItem label="基础">
+        <ElFormItem label="使用说明">
+          <p class="sd-form-tips">通行证页面用到的是独立样式，不在全局样式中定义，具体使用场景自行覆盖</p>
+        </ElFormItem>
+
+        <ElFormItem label="基础用法">
           <ElCheckbox
-            v-model="isChecked"
+            v-model="checkbox1"
           >
-            唱片公司或厂牌
+            备选项
           </ElCheckbox>
-          <p class="sd-form-tips">注：目前仅在注册用到，文本颜色使用的是灰度色</p>
+        </ElFormItem>
+
+        <ElFormItem label="禁用状态">
+          <ElCheckbox
+            v-model="checkbox2"
+            disabled
+          >
+            备选项
+          </ElCheckbox>
+        </ElFormItem>
+
+        <ElFormItem label="多选框组">
+          <ElCheckboxGroup v-model="checklist">
+            <ElCheckbox
+              :label="1"
+            >
+              备选项 1
+            </ElCheckbox>
+            <ElCheckbox
+              :label="2"
+            >
+              备选项 2
+            </ElCheckbox>
+            <ElCheckbox
+              :label="3"
+            >
+              备选项 3
+            </ElCheckbox>
+          </ElCheckboxGroup>
         </ElFormItem>
       </ElForm>
     `,
   }))
-  .add('Select', () => ({
+  .add('Input 输入框', () => ({
+    data() {
+      return {
+        text: '',
+        password: '',
+        disabled: '已输入内容',
+        textarea: '',
+        prepend: '',
+      };
+    },
+    template: `
+      <ElForm label-position="top">
+        <ElFormItem label="基础用法">
+          <ElInput
+            placeholder="请输入内容"
+            v-model="text"
+          />
+        </ElFormItem>
+
+        <ElFormItem label="禁用状态">
+          <ElInput
+            :disabled="true"
+            placeholder="请输入内容"
+            v-model="disabled"
+          />
+        </ElFormItem>
+
+        <ElFormItem label="密码框">
+          <ElInput
+            type="password"
+            placeholder="请输入密码"
+            v-model="password"
+          />
+        </ElFormItem>
+
+        <ElFormItem label="文本域">
+          <ElInput
+            type="textarea"
+            placeholder="请输入内容"
+            v-model="textarea"
+          />
+        </ElFormItem>
+
+        <ElFormItem label="复合输入框">
+          <ElInput
+            placeholder="请输入内容"
+            v-model="prepend"
+          >
+            <template slot="prepend">Https://</template>
+          </ElInput>
+        </ElFormItem>
+      </ElForm>
+    `,
+  }))
+  .add('Select 选择器', () => ({
     data() {
       return {
         optionArea: '',
@@ -275,7 +339,14 @@ storiesOf('ElementUI|Form', module)
       };
     },
     template: `<ElForm label-position="top">
-      <ElFormItem label="基础">
+      <ElFormItem label="使用说明">
+        <div class="sd-form-tips">
+          <p>选项组窗口的宽度规则为：Select 宽度小于 392px 时，窗口宽度 392px; Select 宽度大于 392px 时，窗口宽度等于 Select 宽度</p>
+          <p>TODO: 下拉箭头覆写</p>
+        </div>
+      </ElFormItem>
+
+      <ElFormItem label="基础用法">
         <ElSelect
           v-model="optionArea"
         >
@@ -287,11 +358,25 @@ storiesOf('ElementUI|Form', module)
           />
         </ElSelect>
       </ElFormItem>
+
+      <ElFormItem label="禁用状态">
+        <ElSelect
+          v-model="optionArea"
+          disabled
+        >
+          <ElOption
+            v-for="(item, index) in options"
+            :key="index"
+            :label="item.label"
+            :value="item.value"
+          />
+        </ElSelect>
+      </ElFormItem>
+
       <ElFormItem label="分组及可搜索">
         <ElSelect
           v-model="groupOptionArea"
           filterable
-          popper-class="area-select"
         >
           <ElOptionGroup
             v-for="(group, groupIndex) in groupOptions"
@@ -309,30 +394,126 @@ storiesOf('ElementUI|Form', module)
       </ElFormItem>
     </ElForm>`,
   }))
-  .add('FormItem', () => ({
+  .add('DatePicker 日期选择器', () => ({
     data() {
       return {
-        text: '',
-        isChecked: false,
+        basic: '',
+        daterange: '',
       };
     },
     template: `
-    <div>
-      <h2>Label 上对齐</h2>
       <ElForm label-position="top">
+        <ElFormItem label="使用说明">
+          <div class="sd-form-tips">
+            <p>侵入式自定义比较多，基本上限定了使用方式。需指定 <code>prefix-icon="el-icon-caret-bottom"</code> 和 <code>:clearable="false"</code></p>
+            <p>TODO: 下拉箭头覆写</p>
+          </div>
+        </ElFormItem>
+
+        <ElFormItem label="选择日期">
+          <ElDatePicker
+            v-model="basic"
+            placeholder="yyyy/mm/dd"
+            value-format="yyyy-MM-dd"
+            prefix-icon="el-icon-caret-bottom"
+            :clearable="false"
+          />
+        </ElFormItem>
+
+        <ElFormItem label="选择日期范围">
+          <ElDatePicker
+            v-model="daterange"
+            type="daterange"
+            unlink-panels
+            range-separator="～"
+            prefix-icon="el-icon-caret-bottom"
+            start-placeholder="开始日期"
+            end-placeholder="结束日期"
+            :editable="false"
+            :clearable="false"
+          />
+        </ElFormItem>
+      </ElForm>
+    `,
+  }))
+  .add('Form 表单', () => ({
+    data() {
+      return {
+        text: '',
+        select: '1',
+        isChecked: false,
+        labelPosition: 'top',
+        inline: false,
+      };
+    },
+    template: `
+      <ElForm
+        :label-position="labelPosition"
+        label-width="150px"
+        :inline="inline"
+      >
+        <ElRadioGroup
+          v-model="labelPosition"
+        >
+          <ElRadioButton
+            label="top"
+          >
+            顶部对齐
+          </ElRadioButton>
+          <ElRadioButton
+            label="left"
+          >
+            左对齐
+          </ElRadioButton>
+          <ElRadioButton
+            label="right"
+          >
+            右对齐
+          </ElRadioButton>
+        </ElRadioGroup>
+
+        <ElRadioGroup
+          v-model="inline"
+        >
+          <ElRadioButton
+            :label="true"
+          >
+            行内表单 开启
+          </ElRadioButton>
+          <ElRadioButton
+            :label="false"
+          >
+            行内表单 关闭
+          </ElRadioButton>
+        </ElRadioGroup>
+        <br>
+        <br>
+
+        <ElFormItem label="使用说明">
+          <div class="sd-form-tips">
+            出于多语言切换需求，不方便控制 <code>label-width</code> 宽度，目前前台项目仅用到 顶对齐、非行内 的模式。
+          </div>
+        </ElFormItem>
+
         <ElFormItem label="普通">
           <ElInput
             v-model="text"
           />
         </ElFormItem>
+
         <ElFormItem
           label="必选"
           required
         >
-          <ElInput
-            v-model="text"
-          />
+          <ElSelect
+            v-model="select"
+            placeholder="请选择"
+          >
+            <ElOption label="1" value="1" />
+            <ElOption label="2" value="2" />
+          </ElSelect>
         </ElFormItem>
+
         <ElFormItem
           label="单 FormItem 内分组"
         >
@@ -348,37 +529,11 @@ storiesOf('ElementUI|Form', module)
           </div>
         </ElFormItem>
       </ElForm>
-    </div>
     `,
   }));
 
-storiesOf('ElementUI|Dialog', module)
-  .add('Dialog', () => ({
-    data() {
-      return {
-        isShow: false,
-      };
-    },
-    template: `
-      <div>
-        <button @click.prevent="showDialog">打开弹窗</button>
-        <ElDialog
-          :visible.sync="isShow"
-          title="对话框标题"
-        >
-          内容
-        </ElDialog>
-      </div>
-    `,
-    methods: {
-      showDialog() {
-        this.isShow = true;
-      },
-    },
-  }));
-
-storiesOf('ElementUI|Table', module)
-  .add('基础', () => ({
+storiesOf('Data', module)
+  .add('Table 表格', () => ({
     data() {
       return {
         list: [
@@ -407,93 +562,165 @@ storiesOf('ElementUI|Table', module)
             status: '已过期',
           },
         ],
+        noContent: [],
       };
     },
     template: `
-      <ElTable
-        :data="list"
-      >
-        <ElTableColumn
-          prop="user_name"
-          label="用户名"
-        />
-
-        <ElTableColumn
-          prop="user_email"
-          label="账号"
-        />
-
-        <ElTableColumn
-          prop="client_id"
-          label="Client_ID"
-        />
-
-        <ElTableColumn
-          prop="type"
-          label="身份类型"
-        />
-
-        <ElTableColumn
-          label="审核状态"
+      <div>
+        <h4>普通</h4>
+        <ElTable
+          :data="list"
         >
-          <template slot-scope="scope">
-            <span
-              class="sd-icon-status"
-              :class="{
-                'sd-icon-status--green': scope.row.status === '生效中',
-                'sd-icon-status--gray': scope.row.status === '已过期',
-                'sd-icon-status--yellow': scope.row.status === '未生效',
-              }"
-            />{{ scope.row.status }}
-          </template>
-        </ElTableColumn>
-      </ElTable>
+          <ElTableColumn
+            prop="user_name"
+            label="用户名"
+          />
+
+          <ElTableColumn
+            prop="user_email"
+            label="账号"
+          />
+
+          <ElTableColumn
+            prop="client_id"
+            label="Client_ID"
+          />
+
+          <ElTableColumn
+            prop="type"
+            label="身份类型"
+          />
+
+          <ElTableColumn
+            label="审核状态"
+          >
+            <template slot-scope="scope">
+              <span
+                class="sd-icon-status"
+                :class="{
+                  'sd-icon-status--green': scope.row.status === '生效中',
+                  'sd-icon-status--gray': scope.row.status === '已过期',
+                  'sd-icon-status--yellow': scope.row.status === '未生效',
+                }"
+              />{{ scope.row.status }}
+            </template>
+          </ElTableColumn>
+        </ElTable>
+
+        <h4>空数据</h4>
+        <ElTable
+          :data="noContent"
+        >
+          <ElTableColumn
+            prop="user_name"
+            label="用户名"
+          />
+
+          <ElTableColumn
+            prop="user_email"
+            label="账号"
+          />
+
+          <ElTableColumn
+            prop="client_id"
+            label="Client_ID"
+          />
+
+          <ElTableColumn
+            prop="type"
+            label="身份类型"
+          />
+
+          <ElTableColumn
+            label="审核状态"
+          >
+            <template slot-scope="scope">
+              <span
+                class="sd-icon-status"
+                :class="{
+                  'sd-icon-status--green': scope.row.status === '生效中',
+                  'sd-icon-status--gray': scope.row.status === '已过期',
+                  'sd-icon-status--yellow': scope.row.status === '未生效',
+                }"
+              />{{ scope.row.status }}
+            </template>
+          </ElTableColumn>
+        </ElTable>
+      </div>
     `,
   }))
-  .add('空数据', () => ({
+  .add('Pagination 分页', () => ({
     data() {
       return {
-        list: [],
+        size: 20,
+        total: 100,
+        cur: 0,
       };
     },
     template: `
-      <ElTable
-        :data="list"
-      >
-        <ElTableColumn
-          prop="user_name"
-          label="用户名"
-        />
-
-        <ElTableColumn
-          prop="user_email"
-          label="账号"
-        />
-
-        <ElTableColumn
-          prop="client_id"
-          label="Client_ID"
-        />
-
-        <ElTableColumn
-          prop="type"
-          label="身份类型"
-        />
-
-        <ElTableColumn
-          label="审核状态"
-        >
-          <template slot-scope="scope">
-            <span
-              class="sd-icon-status"
-              :class="{
-                'sd-icon-status--green': scope.row.status === '生效中',
-                'sd-icon-status--gray': scope.row.status === '已过期',
-                'sd-icon-status--yellow': scope.row.status === '未生效',
-              }"
-            />{{ scope.row.status }}
-          </template>
-        </ElTableColumn>
-      </ElTable>
+      <ElPagination
+        layout="total, prev, pager, next, jumper, sizes"
+        :page-size.sync="size"
+        :total="total"
+        :current-page="cur"
+      />
     `,
+  }));
+
+storiesOf('Navigation', module)
+  .add('Tabs 标签页', () => ({
+    data() {
+      return {
+        activeTab: 'first',
+      };
+    },
+    template: `
+      <ElTabs
+        v-model="activeTab"
+      >
+        <ElTabPane
+          name="first"
+          label="待审核"
+        >
+          第一个标签页
+        </ElTabPane>
+        <ElTabPane
+          name="second"
+          label="审核未通过"
+        >
+          第二个标签页
+        </ElTabPane>
+        <ElTabPane
+          name="third"
+          label="审核已通过"
+        >
+          第三个标签页
+        </ElTabPane>
+      </ElTabs>
+    `,
+  }));
+
+storiesOf('Others', module)
+  .add('Dialog', () => ({
+    data() {
+      return {
+        isShow: false,
+      };
+    },
+    template: `
+      <div>
+        <button @click.prevent="showDialog">打开弹窗</button>
+        <ElDialog
+          :visible.sync="isShow"
+          title="对话框标题"
+        >
+          内容
+        </ElDialog>
+      </div>
+    `,
+    methods: {
+      showDialog() {
+        this.isShow = true;
+      },
+    },
   }));

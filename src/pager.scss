@@ -1,0 +1,110 @@
+
+.el-pagination {
+  position: relative;
+  padding: 0;
+  height: 32px;
+  line-height: 32px;
+  text-align: right;
+  font-weight: 400;
+  color: #333;
+
+  span:not([class*=suffix]),
+  button {
+    height: 32px;
+    line-height: 32px;
+    font-size: 14px;
+  }
+
+  .btn-next,
+  .btn-prev,
+  .el-pager li {
+    margin: 0 4px;
+    min-width: 32px;
+    font-size: 14px;
+    border-radius: 4px;
+  }
+
+
+  .btn-next,
+  .btn-prev {
+    color: #333;
+    background: none;
+
+    &:disabled {
+      color: #CCC;
+    }
+  }
+
+  .el-pager li:not(.disabled).active {
+    background: $blue;
+  }
+}
+
+.el-pagination__total {
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #333;
+}
+
+.el-pager {
+  li {
+    box-sizing: border-box;
+    margin: 0 4px;
+    min-width: 32px;
+    height: 32px;
+    line-height: 32px;
+    font-size: 14px;
+    background: #FFF;
+    border-radius: 4px;
+
+    &:hover {
+      color: #0040FF;
+    }
+
+    &.active {
+      font-weight: 600;
+      color: #FFF;
+      background: #0040FF;
+
+      &:hover {
+        color: #FFF;
+      }
+    }
+  }
+
+  li.btn-quicknext,
+  li.btn-quickprev {
+    color: #333;
+  }
+}
+
+.el-pagination .el-select .el-input {
+  margin-right: 0; // 注：强业务依赖，size 组件必须在最后
+
+  .el-input__inner {
+    height: 32px;
+  }
+}
+
+.el-pagination__jump {
+  margin-left: 4px;
+  color: #333;
+}
+
+.el-pagination__sizes {
+  margin: 0 0 0 24px;
+  color: #333;
+
+  .el-input .el-input__inner:hover {
+    color: $blue;
+  }
+}
+
+.el-pagination__editor.el-input {
+  width: 48px;
+
+  .el-input__inner {
+    height: 32px;
+  }
+}

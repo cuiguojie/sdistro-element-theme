@@ -1,0 +1,27 @@
+.el-carousel__arrow {
+  &,
+  &:hover {
+    background: none;
+  }
+
+  .el-icon-arrow-left,
+  .el-icon-arrow-right {
+    font-size: 36px;
+    opacity: .6;
+  }
+}
+
+.el-carousel__indicators {
+  bottom: 26px;
+}
+
+.el-carousel__indicator {
+  padding: 6px;
+}
+
+.el-carousel__button {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  opacity: .5;
+}

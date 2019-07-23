@@ -37,8 +37,6 @@ import {
   Upload,
 } from 'element-ui';
 
-import '@/index.scss';
-
 Vue.use(Aside);
 Vue.use(Breadcrumb);
 Vue.use(BreadcrumbItem);
