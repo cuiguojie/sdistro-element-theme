@@ -11,6 +11,7 @@ import {
   CheckboxGroup,
   DatePicker,
   Dialog,
+  Drawer,
   Form,
   FormItem,
   Header,
@@ -47,6 +48,7 @@ Vue.use(Col);
 Vue.use(Container);
 Vue.use(DatePicker);
 Vue.use(Dialog);
+Vue.use(Drawer);
 Vue.use(Form);
 Vue.use(FormItem);
 Vue.use(Header);

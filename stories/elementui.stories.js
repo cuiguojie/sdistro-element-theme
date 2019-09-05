@@ -723,4 +723,29 @@ storiesOf('Others', module)
         this.isShow = true;
       },
     },
+  }))
+  .add('Drawer', () => ({
+    data() {
+      return {
+        isShow: false,
+      };
+    },
+    template: `
+      <div>
+        <button @click.prevent="showDrawer">打开抽屉</button>
+        <ElDrawer
+          title="抽屉标题"
+          :visible.sync="isShow"
+        >
+          <p>内容</p>
+          <p>内容</p>
+          <p>内容</p>
+        </ElDrawer>
+      </div>
+    `,
+    methods: {
+      showDrawer() {
+        this.isShow = true;
+      },
+    },
   }));

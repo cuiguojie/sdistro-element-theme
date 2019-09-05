@@ -1,6 +1,6 @@
 {
   "name": "sdistro-element-theme",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "星球发行自定义 ElementUI 皮肤",
   "main": "src/index.scss",
   "private": false,
@@ -30,7 +30,7 @@
     "babel-eslint": "^10.0.1",
     "babel-plugin-component": "^1.1.1",
     "core-js": "^2.6.5",
-    "element-ui": "^2.4.5",
+    "element-ui": "^2.12.0",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "sass": "^1.18.0",

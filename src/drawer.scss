@@ -1,0 +1,14 @@
+.el-drawer__header {
+  margin-bottom: 40px;
+  padding: 40px 40px 0;
+
+  & > :first-child {
+    line-height: 36px;
+    font-size: 24px;
+    color: #333;
+  }
+}
+
+.el-drawer__body {
+  padding: 0 40px;
+}
