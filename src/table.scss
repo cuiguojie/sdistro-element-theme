@@ -5,7 +5,7 @@
 
   th.is-leaf,
   td {
-    border-bottom: none;
+    border-bottom: 1px solid #EEE;
   }
 
   th {
@@ -20,10 +20,6 @@
       font-size: 0;
       font-weight: 400;
     }
-  }
-
-  .el-table__row {
-    box-shadow: inset 0 -1px 1px #EEE;
   }
 
   .cell {

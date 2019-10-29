@@ -1,0 +1,39 @@
+.el-collapse {
+  border: 0;
+}
+
+.el-collapse-item {
+  // box-shadow: 0 -1px 0 #EEE;
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .el-collapse-item__arrow {
+    font-size: 24px;
+    line-height: 1;
+    font-family: "sd-icon" !important;
+  }
+
+  .el-icon-arrow-right {
+    &:before {
+      content: '\e601';
+    }
+
+    &.is-active {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.el-collapse-item__header {
+  // border: 0
+  font-weight: 400;
+  font-size: 14px;
+  color: #333;
+}
+
+.el-collapse-item__content {
+  padding-top: 16px;
+  padding-bottom: 40px;
+  font-size: 14px;
+}

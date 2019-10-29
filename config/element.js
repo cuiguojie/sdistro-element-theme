@@ -6,6 +6,8 @@ import {
   BreadcrumbItem,
   Button,
   Col,
+  Collapse,
+  CollapseItem,
   Container,
   Checkbox,
   CheckboxGroup,
@@ -45,6 +47,8 @@ Vue.use(Button);
 Vue.use(Checkbox);
 Vue.use(CheckboxGroup);
 Vue.use(Col);
+Vue.use(Collapse);
+Vue.use(CollapseItem);
 Vue.use(Container);
 Vue.use(DatePicker);
 Vue.use(Dialog);

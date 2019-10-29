@@ -1,6 +1,6 @@
 {
   "name": "sdistro-element-theme",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "星球发行自定义 ElementUI 皮肤",
   "main": "src/index.scss",
   "private": false,
@@ -19,25 +19,28 @@
   },
   "homepage": "https://github.com/cuiguojie/sdistro-element-theme#readme",
   "devDependencies": {
-    "@storybook/addon-actions": "^4.1.0 || ^5.0.0",
-    "@storybook/addon-knobs": "^4.1.0 || ^5.0.0",
-    "@storybook/addon-links": "^4.1.0 || ^5.0.0",
-    "@storybook/addon-notes": "^4.1.0 || ^5.0.0",
-    "@vue/cli-plugin-babel": "^3.9.0",
-    "@vue/cli-plugin-eslint": "^3.9.0",
-    "@vue/cli-service": "^3.9.0",
+    "@storybook/addon-actions": "^5.2.5",
+    "@storybook/addon-knobs": "^5.2.5",
+    "@storybook/addon-links": "^5.2.5",
+    "@storybook/addon-notes": "^5.2.5",
+    "@vue/cli-plugin-babel": "^3.12.1",
+    "@vue/cli-plugin-eslint": "^3.12.1",
+    "@vue/cli-service": "^3.12.1",
     "@vue/eslint-config-airbnb": "^4.0.0",
-    "babel-eslint": "^10.0.1",
+    "babel-eslint": "^10.0.3",
     "babel-plugin-component": "^1.1.1",
-    "core-js": "^2.6.5",
+    "core-js": "^2.6.10",
     "element-ui": "^2.12.0",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
-    "sass": "^1.18.0",
-    "sass-loader": "^7.1.0",
+    "sass": "^1.23.1",
+    "sass-loader": "^7.3.1",
     "vue": "^2.6.10",
     "vue-cli-plugin-element": "^1.0.1",
     "vue-cli-plugin-storybook": "^0.6.1",
     "vue-template-compiler": "^2.6.10"
+  },
+  "dependencies": {
+    "@storybook/vue": "^5.2.5"
   }
 }
