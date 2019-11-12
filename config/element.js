@@ -36,6 +36,7 @@ import {
   TableColumn,
   Tabs,
   TabPane,
+  Tag,
   Tree,
   Upload,
 } from 'element-ui';
@@ -72,6 +73,7 @@ Vue.use(Table);
 Vue.use(TableColumn);
 Vue.use(Tabs);
 Vue.use(TabPane);
+Vue.use(Tag);
 Vue.use(Tree);
 Vue.use(Upload);
 

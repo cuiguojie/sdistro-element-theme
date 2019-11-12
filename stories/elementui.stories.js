@@ -649,6 +649,47 @@ storiesOf('Data', module)
       </div>
     `,
   }))
+  .add('Tag 标签',
+    () => ({
+      data() {
+        return {
+          list: [
+            {
+              name: '标签1',
+            },
+            {
+              name: '标签2',
+            },
+            {
+              name: '标签3',
+            },
+            {
+              name: '标签4',
+            },
+          ],
+        };
+      },
+      methods: {
+        removeItem(index) {
+          this.list.splice(index, 1);
+        },
+      },
+      template: `
+        <div>
+          <ElTag
+            v-for="(item, index) in list"
+            :key="index"
+            closable
+            @close="removeItem(index)"
+          >
+            {{ item.name }}
+          </ElTag>
+        </div>
+      `,
+    }),
+    {
+      notes: '目前仅对默认的 `light` 主题做了覆写，并且 `type` 和 `size` 均使用默认值； `disable-transitions` 未作修改，但是当前版本 `10.12.0` 动画位置看上去有些问题，实际使用建议开启',
+    })
   .add('Pagination 分页', () => ({
     data() {
       return {
