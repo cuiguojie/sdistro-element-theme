@@ -1,6 +1,13 @@
 .el-table {
+  color: #333;
+
   thead {
-    color: #666;
+    color: #333;
+  }
+
+  th,
+  td {
+    padding: 8px 0;
   }
 
   th.is-leaf,
@@ -9,7 +16,7 @@
   }
 
   th {
-    background: #EEE;
+    background: #FAFAFA;
 
     // 消除 ElementUI原本的设定
     // .el-table th > .cell { display: inline-block }
@@ -25,7 +32,7 @@
   .cell {
     padding-left: 15px;
     padding-right: 15px;
-    line-height: 20px;
+    line-height: 24px;
     font-size: 14px;
   }
 }
