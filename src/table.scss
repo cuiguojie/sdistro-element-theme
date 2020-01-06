@@ -27,6 +27,12 @@
       font-size: 0;
       font-weight: 400;
     }
+
+    // 2.13.0 加入了 padding-left: 10px ; padding-right: 10px 的默认样式，需要覆盖
+    & > .cell {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
   }
 
   .cell {
