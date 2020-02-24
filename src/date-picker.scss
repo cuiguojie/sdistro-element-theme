@@ -2,7 +2,7 @@
   position: relative;
 
   &.el-date-editor--date {
-    width: 256px;
+    width: 100%;
   }
 
   .el-input__inner {
@@ -21,7 +21,8 @@
   }
 
   .el-range-input {
-    width: 96px;
+    flex-grow: 0.5;
+    width: auto;
     color: #333;
   }
 
@@ -42,7 +43,7 @@
     margin-left: 0;
     width: 32px;
     line-height: 30px;
-    font-size: 14px;
+    font-size: 24px;
     color: #333;
   }
 
@@ -52,10 +53,15 @@
     right: 0;
     top: 0;
   }
+
+  // 屏蔽清除数据按钮，需要设置 :clearable="false"
+  .el-range__close-icon {
+    display: none;
+  }
 }
 
 .el-range-editor.el-input__inner {
-  padding: 0 8px;
+  padding: 0 32px 0 8px;
   border: 1px solid #DDD;
 }
 
@@ -143,7 +149,9 @@
 
 .el-date-editor--daterange.el-input,
 .el-date-editor--daterange.el-input__inner {
-  width: 270px;
+  // 取消固定尺寸，在 ElCol、ElFormItem 等环境中自适应外部容器尺寸；并使用 flex 布局
+  display: flex;
+  width: 100%;
 
   &.is-active {
     border-color: $blue;
