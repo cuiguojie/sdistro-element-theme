@@ -5,6 +5,7 @@ import {
   Breadcrumb,
   BreadcrumbItem,
   Button,
+  Cascader,
   Col,
   Collapse,
   CollapseItem,
@@ -45,6 +46,7 @@ Vue.use(Aside);
 Vue.use(Breadcrumb);
 Vue.use(BreadcrumbItem);
 Vue.use(Button);
+Vue.use(Cascader);
 Vue.use(Checkbox);
 Vue.use(CheckboxGroup);
 Vue.use(Col);

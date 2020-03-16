@@ -342,7 +342,6 @@ storiesOf('Form', module)
       <ElFormItem label="使用说明">
         <div class="sd-form-tips">
           <p>选项组窗口的宽度规则为：Select 宽度小于 392px 时，窗口宽度 392px; Select 宽度大于 392px 时，窗口宽度等于 Select 宽度</p>
-          <p>TODO: 下拉箭头覆写</p>
         </div>
       </ElFormItem>
 
@@ -391,6 +390,124 @@ storiesOf('Form', module)
             />
           </ElOptionGroup>
         </ElSelect>
+      </ElFormItem>
+    </ElForm>`,
+  }))
+  .add('Cascader 级联选择器', () => ({
+    data() {
+      return {
+        options: [
+          {
+            id: 1,
+            name: '中国',
+            children: [
+              {
+                id: 11,
+                name: '上海',
+              },
+              {
+                id: 12,
+                name: '北京',
+              },
+              {
+                id: 13,
+                name: '天津',
+              },
+              {
+                id: 14,
+                name: '重庆',
+              },
+              {
+                id: 15,
+                name: '哈尔滨',
+              },
+              {
+                id: 16,
+                name: '长春',
+              },
+              {
+                id: 17,
+                name: '大连',
+              },
+              {
+                id: 18,
+                name: '石家庄',
+              },
+            ],
+          },
+          {
+            id: 2,
+            name: '美国',
+            children: [
+              {
+                id: 21,
+                name: '纽约',
+              },
+              {
+                id: 22,
+                name: '华盛顿',
+              },
+            ],
+          },
+          {
+            id: 3,
+            name: '英国',
+            children: [
+              {
+                id: 31,
+                name: '伦敦',
+              },
+            ],
+          },
+          {
+            id: 4,
+            name: '法国',
+            children: [
+              {
+                id: 41,
+                name: '巴黎',
+              },
+            ],
+          },
+          {
+            id: 5,
+            name: '德国',
+            children: [
+              {
+                id: 51,
+                name: '柏林',
+              },
+            ],
+          },
+          {
+            id: 6,
+            name: '意大利',
+            children: [
+              {
+                id: 61,
+                name: '罗马',
+              },
+            ],
+          },
+        ],
+      };
+    },
+    template: `<ElForm label-position="top">
+      <ElFormItem label="使用说明">
+        <div class="sd-form-tips">
+          <p></p>
+        </div>
+      </ElFormItem>
+
+      <ElFormItem label="基础用法">
+        <ElCascader
+          v-model="value"
+          :options="options"
+          :props="{
+            value: 'id',
+            label: 'name',
+          }"
+        />
       </ElFormItem>
     </ElForm>`,
   }))
