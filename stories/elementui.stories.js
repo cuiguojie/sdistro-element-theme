@@ -220,6 +220,10 @@ storiesOf('Form', module)
             value: '10',
             label: '阿尔及利亚',
           },
+          {
+            value: '11',
+            label: '苏维埃共和国',
+          },
         ],
         groupOptions: [
           {
@@ -336,12 +340,14 @@ storiesOf('Form', module)
             ],
           },
         ],
+        multiple: [],
       };
     },
     template: `<ElForm label-position="top">
       <ElFormItem label="使用说明">
         <div class="sd-form-tips">
-          <p>选项组窗口的宽度规则为：Select 宽度小于 392px 时，窗口宽度 392px; Select 宽度大于 392px 时，窗口宽度等于 Select 宽度</p>
+          <p>分组菜单浮层的宽度规则为：Select 宽度小于 392px 时，窗口宽度 392px; Select 宽度大于 392px 时，窗口宽度等于 Select 宽度</p>
+          <p>多选 <code>multiple</code> 目前限定 <code>collapse-tags</code> 模式</p>
         </div>
       </ElFormItem>
 
@@ -389,6 +395,21 @@ storiesOf('Form', module)
               :value="item.value"
             />
           </ElOptionGroup>
+        </ElSelect>
+      </ElFormItem>
+
+      <ElFormItem label="多选">
+        <ElSelect
+          v-model="multiple"
+          multiple
+          collapse-tags
+        >
+          <ElOption
+            v-for="(option, index) in options"
+            :key="index"
+            :label="option.label"
+            :value="option.value"
+          />
         </ElSelect>
       </ElFormItem>
     </ElForm>`,

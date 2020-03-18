@@ -41,6 +41,7 @@
   color: #333;
 
   &.selected {
+    font-weight: 400;
     color: $blue;
   }
 }
@@ -84,5 +85,21 @@
 
   &:after {
     display: none;
+  }
+}
+
+.el-select-dropdown__list {
+  padding: 8px 0;
+}
+
+.el-select-dropdown.is-multiple .el-select-dropdown__item {
+  padding: 0 32px 0 8px;
+
+  &.selected {
+    color: $blue;
+
+    &:after {
+      right: 8px;
+    }
   }
 }
