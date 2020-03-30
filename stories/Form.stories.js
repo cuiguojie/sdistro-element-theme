@@ -576,15 +576,57 @@ storiesOf('Form', module)
   }))
   .add('Form 表单', () => ({
     data() {
+      const isPhone = (rule, val, callback) => {
+        if (val.length !== 11 && val !== '') {
+          callback(new Error('长度不符合规则'));
+        }
+      };
+
       return {
         text: '',
         select: '1',
         isChecked: false,
         labelPosition: 'top',
         inline: false,
+
+        rules: {
+          name: [
+            {
+              required: true,
+            },
+            {
+              min: 3,
+              max: 5,
+              trigger: 'blur',
+            },
+          ],
+          typeId: [
+            {
+              required: true,
+            },
+          ],
+          typeIds: [
+            {
+              required: true,
+            },
+          ],
+          phone: [
+            {
+              validator: isPhone,
+              trigger: 'blur',
+            },
+          ],
+        },
+        data: {
+          name: '',
+          typeId: null,
+          typeIds: [],
+          phone: '',
+          qq: '',
+        },
       };
     },
-    template: `
+    template: `<div>
       <ElForm
         :label-position="labelPosition"
         label-width="150px"
@@ -632,374 +674,68 @@ storiesOf('Form', module)
             出于多语言切换需求，不方便控制 <code>label-width</code> 宽度，目前前台项目仅用到 顶对齐、非行内 的模式。
           </div>
         </ElFormItem>
+      </ElForm>
 
-        <ElFormItem label="普通">
-          <ElInput
-            v-model="text"
-          />
-        </ElFormItem>
-
+      <ElForm
+        label-position="top"
+        :model="data"
+        :rules="rules"
+        :show-message="false"
+      >
         <ElFormItem
-          label="必选"
-          required
+          label="文本"
+          prop="name"
         >
-          <ElSelect
-            v-model="select"
-            placeholder="请选择"
-          >
-            <ElOption label="1" value="1" />
-            <ElOption label="2" value="2" />
-          </ElSelect>
+          <ElInput v-model="data.name" />
+          <div class="sd-form-item--more">3-5字符，必填</div>
         </ElFormItem>
 
         <ElFormItem
           label="单 FormItem 内分组"
         >
-          <ElInput
-            v-model="text"
-            placeholder="第一个输入框"
-          />
-          <div class="sd-form-item--more">
+          <ElFormItem>
             <ElInput
-              v-model="text"
-              placeholder="第二个输入框"
+              v-model="data.qq"
+              placeholder="QQ"
             />
-          </div>
+          </ElFormItem>
+
+          <ElFormItem
+            prop="phone"
+          >
+            <ElInput
+              v-model="data.phone"
+              placeholder="电话，非必填，11位"
+            />
+          </ElFormItem>
+        </ElFormItem>
+
+        <ElFormItem
+          label="单选"
+          prop="typeId"
+        >
+          <ElSelect
+            v-model="data.typeId"
+          >
+            <ElOption label="选项 1" :value="1" />
+            <ElOption label="选项 2" :value="2" />
+          </ElSelect>
+        </ElFormItem>
+
+        <ElFormItem
+          label="多选"
+          prop="typeIds"
+        >
+          <ElSelect
+            v-model="data.typeIds"
+            multiple
+            collapse-tags
+          >
+            <ElOption label="选项 1" :value="1" />
+            <ElOption label="选项 2" :value="2" />
+          </ElSelect>
+          <div class="sd-form-item--more">多选，至少选择一项</div>
         </ElFormItem>
       </ElForm>
-    `,
-  }));
-
-storiesOf('Data', module)
-  .add('Table 表格', () => ({
-    data() {
-      return {
-        list: [
-          {
-            id: 0,
-            user_name: '看见网络科技（上海）有限公司',
-            client_id: 'HW1719-J012',
-            user_email: 'abc@kanjian.com',
-            type: '国内大合同',
-            status: '未生效',
-          },
-          {
-            id: 0,
-            user_name: '看见网络科技（上海）有限公司看见网络科技（上海）有限公司',
-            client_id: 'HW1719-J012',
-            user_email: 'abc@kanjian.com',
-            type: '国内大合同',
-            status: '生效中',
-          },
-          {
-            id: 0,
-            user_name: 'NeoBaran',
-            client_id: 'HW1719-J012',
-            user_email: 'abc@kanjian.com',
-            type: '国内大合同',
-            status: '已过期',
-          },
-        ],
-        noContent: [],
-      };
-    },
-    template: `
-      <div>
-        <h4>普通</h4>
-        <ElTable
-          :data="list"
-        >
-          <ElTableColumn
-            prop="user_name"
-            label="用户名"
-          />
-
-          <ElTableColumn
-            prop="user_email"
-            label="账号"
-          />
-
-          <ElTableColumn
-            prop="client_id"
-            label="Client_ID"
-          />
-
-          <ElTableColumn
-            prop="type"
-            label="身份类型"
-          />
-
-          <ElTableColumn
-            label="审核状态"
-          >
-            <template slot-scope="scope">
-              <span
-                class="sd-icon-status"
-                :class="{
-                  'sd-icon-status--green': scope.row.status === '生效中',
-                  'sd-icon-status--gray': scope.row.status === '已过期',
-                  'sd-icon-status--yellow': scope.row.status === '未生效',
-                }"
-              />{{ scope.row.status }}
-            </template>
-          </ElTableColumn>
-        </ElTable>
-
-        <h4>空数据</h4>
-        <ElTable
-          :data="noContent"
-        >
-          <ElTableColumn
-            prop="user_name"
-            label="用户名"
-          />
-
-          <ElTableColumn
-            prop="user_email"
-            label="账号"
-          />
-
-          <ElTableColumn
-            prop="client_id"
-            label="Client_ID"
-          />
-
-          <ElTableColumn
-            prop="type"
-            label="身份类型"
-          />
-
-          <ElTableColumn
-            label="审核状态"
-          >
-            <template slot-scope="scope">
-              <span
-                class="sd-icon-status"
-                :class="{
-                  'sd-icon-status--green': scope.row.status === '生效中',
-                  'sd-icon-status--gray': scope.row.status === '已过期',
-                  'sd-icon-status--yellow': scope.row.status === '未生效',
-                }"
-              />{{ scope.row.status }}
-            </template>
-          </ElTableColumn>
-        </ElTable>
-      </div>
-    `,
-  }))
-  .add('Tag 标签',
-    () => ({
-      data() {
-        return {
-          list: [
-            {
-              name: '标签1',
-            },
-            {
-              name: '标签2',
-            },
-            {
-              name: '标签3',
-            },
-            {
-              name: '标签4',
-            },
-          ],
-        };
-      },
-      methods: {
-        removeItem(index) {
-          this.list.splice(index, 1);
-        },
-      },
-      template: `
-        <div>
-          <ElTag
-            v-for="(item, index) in list"
-            :key="index"
-            closable
-            @close="removeItem(index)"
-          >
-            {{ item.name }}
-          </ElTag>
-        </div>
-      `,
-    }),
-    {
-      notes: '目前仅对默认的 `light` 主题做了覆写，并且 `type` 和 `size` 均使用默认值； `disable-transitions` 未作修改，但是当前版本 `10.12.0` 动画位置看上去有些问题，实际使用建议开启',
-    })
-  .add('Pagination 分页', () => ({
-    data() {
-      return {
-        size: 20,
-        total: 100,
-        cur: 0,
-      };
-    },
-    template: `
-      <ElPagination
-        layout="total, prev, pager, next, jumper, sizes"
-        :page-size.sync="size"
-        :total="total"
-        :current-page="cur"
-      />
-    `,
-  }));
-
-storiesOf('Navigation', module)
-  .add('Tabs 标签页', () => ({
-    data() {
-      return {
-        activeTab: 'first',
-      };
-    },
-    template: `
-      <ElTabs
-        v-model="activeTab"
-      >
-        <ElTabPane
-          name="first"
-          label="待审核"
-        >
-          第一个标签页
-        </ElTabPane>
-        <ElTabPane
-          name="second"
-          label="审核未通过"
-        >
-          第二个标签页
-        </ElTabPane>
-        <ElTabPane
-          name="third"
-          label="审核已通过"
-        >
-          第三个标签页
-        </ElTabPane>
-      </ElTabs>
-    `,
-  }));
-
-storiesOf('Others', module)
-  .add('Dialog', () => ({
-    data() {
-      return {
-        isShow: false,
-      };
-    },
-    template: `
-      <div>
-        <button @click.prevent="showDialog">打开弹窗</button>
-        <ElDialog
-          :visible.sync="isShow"
-          title="对话框标题"
-        >
-          内容
-        </ElDialog>
-      </div>
-    `,
-    methods: {
-      showDialog() {
-        this.isShow = true;
-      },
-    },
-  }))
-  .add('Collapse',
-    () => ({
-      data() {
-        return {
-          active: '1',
-          active2: [],
-        };
-      },
-      template: `
-        <div>
-          <h4>普通模式</h4>
-          <ElCollapse
-            v-model="active2"
-          >
-            <ElCollapseItem
-              title="一致性 Consistency"
-              name="1"
-            >
-              <div>
-                与现实生活一致：与现实生活的流程、逻辑保持一致，遵循用户习惯的语言和概念；</div>
-              <div>
-                在界面中一致：所有的元素和结构需保持一致，比如：设计样式、图标和文本、元素的位置等。
-              </div>
-            </ElCollapseItem>
-            <ElCollapseItem
-              title="反馈 Feedback"
-              name="2"
-            >
-              <div>控制反馈：通过界面样式和交互动效让用户可以清晰的感知自己的操作；</div>
-              <div>页面反馈：操作后，通过页面元素的变化清晰地展现当前状态。</div>
-            </ElCollapseItem>
-            <ElCollapseItem
-              title="效率 Efficiency"
-              name="3"
-            >
-              <div>简化流程：设计简洁直观的操作流程；</div>
-              <div>清晰明确：语言表达清晰且表意明确，让用户快速理解进而作出决策；</div>
-            </ElCollapseItem>
-          </ElCollapse>
-          <h4>手风琴模式</h4>
-          <ElCollapse
-            v-model="active"
-            accordion
-          >
-            <ElCollapseItem
-              title="一致性 Consistency"
-              name="1"
-            >
-              <div>
-                与现实生活一致：与现实生活的流程、逻辑保持一致，遵循用户习惯的语言和概念；</div>
-              <div>
-                在界面中一致：所有的元素和结构需保持一致，比如：设计样式、图标和文本、元素的位置等。
-              </div>
-            </ElCollapseItem>
-            <ElCollapseItem
-              title="反馈 Feedback"
-              name="2"
-            >
-              <div>控制反馈：通过界面样式和交互动效让用户可以清晰的感知自己的操作；</div>
-              <div>页面反馈：操作后，通过页面元素的变化清晰地展现当前状态。</div>
-            </ElCollapseItem>
-            <ElCollapseItem
-              title="效率 Efficiency"
-              name="3"
-            >
-              <div>简化流程：设计简洁直观的操作流程；</div>
-              <div>清晰明确：语言表达清晰且表意明确，让用户快速理解进而作出决策；</div>
-            </ElCollapseItem>
-          </ElCollapse>
-        </div>
-      `,
-    }),
-    {
-      notes: '设计中，实际内容上边缘和标题文本下边缘固定间距 24px, 但是标题区折叠时固定高度，且字号大小不同，无法统一样式，需要在业务场景中覆写 <code>.el-collapse-item__content</code> 的内顶边距',
-    })
-  .add('Drawer', () => ({
-    data() {
-      return {
-        isShow: false,
-      };
-    },
-    template: `
-      <div>
-        <button @click.prevent="showDrawer">打开抽屉</button>
-        <ElDrawer
-          title="抽屉标题"
-          :visible.sync="isShow"
-        >
-          <p>内容</p>
-          <p>内容</p>
-          <p>内容</p>
-        </ElDrawer>
-      </div>
-    `,
-    methods: {
-      showDrawer() {
-        this.isShow = true;
-      },
-    },
+    </div>`,
   }));
