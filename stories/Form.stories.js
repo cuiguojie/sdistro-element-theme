@@ -19,7 +19,7 @@ storiesOf('Form', module)
           <p class="sd-form-tips">固定样式，<strong>不接受</strong> Element-UI 中的 <code>size</code> 参数</p>
         </ElFormItem>
 
-        <ElFormItem label="单选框组">
+        <ElFormItem label="单选框组 - 常规">
           <ElRadioGroup
             v-model="isChecked"
           >
@@ -40,6 +40,29 @@ storiesOf('Form', module)
             </ElRadio>
           </ElRadioGroup>
           <p class="sd-form-tips">注：没有考虑选项过多情况下的纵向排版，一般情况下多选项应使用 Select 组件</p>
+        </ElFormItem>
+
+        <ElFormItem label="单选框组 - 单行显示">
+          <ElRadioGroup
+            v-model="isChecked"
+            class="option-group--block"
+          >
+            <ElRadio
+              :label="1"
+            >
+              唱片公司或厂牌
+            </ElRadio>
+            <ElRadio
+              :label="2"
+            >
+              个人工作室
+            </ElRadio>
+            <ElRadio
+              :label="3"
+            >
+              版权代理机构
+            </ElRadio>
+          </ElRadioGroup>
         </ElFormItem>
 
         <ElFormItem label="禁用状态">
@@ -93,6 +116,8 @@ storiesOf('Form', module)
         checkbox1: false,
         checkbox2: false,
         checklist: [],
+        checkall: false,
+        isIndeterminate: true,
       };
     },
     template: `
@@ -120,6 +145,61 @@ storiesOf('Form', module)
 
         <ElFormItem label="多选框组">
           <ElCheckboxGroup v-model="checklist">
+            <ElCheckbox
+              :label="1"
+            >
+              备选项 1
+            </ElCheckbox>
+            <ElCheckbox
+              :label="2"
+            >
+              备选项 2
+            </ElCheckbox>
+            <ElCheckbox
+              :label="3"
+            >
+              备选项 3
+            </ElCheckbox>
+          </ElCheckboxGroup>
+        </ElFormItem>
+
+        <ElFormItem label="多选框组 - 单行列表">
+          <ElCheckboxGroup
+            v-model="checklist"
+            class="option-group--block"
+          >
+            <ElCheckbox
+              :label="1"
+            >
+              备选项 1
+            </ElCheckbox>
+
+            <ElCheckbox
+              :label="2"
+            >
+              备选项 2
+            </ElCheckbox>
+
+            <ElCheckbox
+              :label="3"
+            >
+              备选项 3
+            </ElCheckbox>
+          </ElCheckboxGroup>
+        </ElFormItem>
+
+        <ElFormItem label="indeterminate 状态 - 未完成">
+          <p>
+            <ElCheckbox
+              v-model="checkall"
+              :indeterminate="isIndeterminate"
+            >
+              全选
+            </ElCheckbox>
+          </p>
+          <ElCheckboxGroup
+            v-model="checklist"
+          >
             <ElCheckbox
               :label="1"
             >
@@ -222,7 +302,7 @@ storiesOf('Form', module)
           },
           {
             value: '11',
-            label: '苏维埃共和国',
+            label: '苏维埃共和国苏维埃共和国',
           },
         ],
         groupOptions: [
@@ -312,6 +392,10 @@ storiesOf('Form', module)
                 value: '10',
                 label: '阿尔及利亚',
               },
+              {
+                value: '11',
+                label: '苏维埃共和国苏维埃共和国',
+              },
             ],
           },
           {
@@ -378,7 +462,7 @@ storiesOf('Form', module)
         </ElSelect>
       </ElFormItem>
 
-      <ElFormItem label="分组及可搜索">
+      <ElFormItem label="分组及可搜索 - 普通模式">
         <ElSelect
           v-model="groupOptionArea"
           filterable
@@ -396,6 +480,30 @@ storiesOf('Form', module)
             />
           </ElOptionGroup>
         </ElSelect>
+      </ElFormItem>
+
+      <ElFormItem label="分组及可搜索 - 行内模式">
+        <ElSelect
+          v-model="groupOptionArea"
+          filterable
+        >
+          <ElOptionGroup
+            v-for="(group, groupIndex) in groupOptions"
+            :key="groupIndex"
+            :label="group.label"
+            class="inline"
+          >
+            <ElOption
+              v-for="(item, itemIndex) in group.options"
+              :key="itemIndex"
+              :label="item.label"
+              :value="item.value"
+            />
+          </ElOptionGroup>
+        </ElSelect>
+        <div class="sd-form-item--more">
+          需要 <code>ElOptionGroup</code> 添加 <code>class="inline"</code>
+        </div>
       </ElFormItem>
 
       <ElFormItem label="多选">
@@ -632,42 +740,29 @@ storiesOf('Form', module)
         label-width="150px"
         :inline="inline"
       >
-        <ElRadioGroup
-          v-model="labelPosition"
+        <ElFormItem
+          label="常规"
         >
-          <ElRadioButton
-            label="top"
+          <ElRadioGroup
+            v-model="labelPosition"
           >
-            顶部对齐
-          </ElRadioButton>
-          <ElRadioButton
-            label="left"
-          >
-            左对齐
-          </ElRadioButton>
-          <ElRadioButton
-            label="right"
-          >
-            右对齐
-          </ElRadioButton>
-        </ElRadioGroup>
-
-        <ElRadioGroup
-          v-model="inline"
-        >
-          <ElRadioButton
-            :label="true"
-          >
-            行内表单 开启
-          </ElRadioButton>
-          <ElRadioButton
-            :label="false"
-          >
-            行内表单 关闭
-          </ElRadioButton>
-        </ElRadioGroup>
-        <br>
-        <br>
+            <ElRadioButton
+              label="top"
+            >
+              顶部对齐
+            </ElRadioButton>
+            <ElRadioButton
+              label="left"
+            >
+              左对齐
+            </ElRadioButton>
+            <ElRadioButton
+              label="right"
+            >
+              右对齐
+            </ElRadioButton>
+          </ElRadioGroup>
+        <ElFormItem>
 
         <ElFormItem label="使用说明">
           <div class="sd-form-tips">

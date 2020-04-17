@@ -38,3 +38,13 @@
     color: #333;
   }
 }
+
+// TODO 待完善
+.el-checkbox .el-checkbox__input.is-indeterminate .el-checkbox__inner {
+  background: $blue;
+  border-color: $blue;
+
+  &:before {
+    top: 6px;
+  }
+}

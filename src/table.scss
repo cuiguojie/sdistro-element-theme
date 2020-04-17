@@ -44,6 +44,7 @@
   }
 }
 
+// 空内容
 .el-table__empty-block {
   min-height: 88px;
 }
@@ -51,4 +52,34 @@
 .el-table__empty-text {
   font-size: 24px;
   color: #999;
+}
+
+// 操作链接色
+.el-table a {
+  color: $blue;
+}
+
+.el-table .opt a {
+  & + a {
+    margin-left: 24px;
+  }
+}
+
+// expand 模式魔改
+.el-table__row .el-table__row--noexpand .el-table__expand-column .cell {
+  display: none;
+}
+
+.el-table__expand-column .el-table__expand-icon {
+  & > .el-icon {
+    font-size: 20px;
+    position: static;
+    left: 0;
+    top: 0;
+    margin: 0;
+  }
+}
+
+.el-table .el-table__expanded-cell[class*=cell] {
+  padding: 24px;
 }

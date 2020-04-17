@@ -30,6 +30,37 @@ storiesOf('Others', module)
       },
     },
   }))
+  .add('Popconfirm',
+    () => ({
+      data() {
+        return {
+          active: '1',
+          active2: [],
+        };
+      },
+      template: `
+        <div>
+          <ElPopconfirm
+            title="确认重置？"
+            cancel-button-type=""
+            cancel-button-size=""
+            placement="bottom-start"
+            :visible-arrow="false"
+            :hide-icon="true"
+            :width="256"
+          >
+            <a
+              slot="reference"
+              href="#"
+              @click.prevent
+            >重置该发票</a>
+          </ElPopconfirm>
+        </div>
+      `,
+    }),
+    {
+      notes: '',
+    })
   .add('Collapse',
     () => ({
       data() {
@@ -118,9 +149,13 @@ storiesOf('Others', module)
           title="抽屉标题"
           :visible.sync="isShow"
         >
-          <p>内容</p>
-          <p>内容</p>
-          <p>内容</p>
+          <div class="sd-drawer__container">
+            <div class="sd-drawer__content">
+              <p>内容</p>
+              <p>内容</p>
+              <p>内容</p>
+            </div>
+          </div>
         </ElDrawer>
       </div>
     `,

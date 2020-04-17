@@ -77,6 +77,8 @@
 }
 
 .sd-form-item--more {
+  margin-top: 8px;
+
   &:after {
     content: "";
     display: table;
@@ -84,5 +86,35 @@
     clear: both;
   }
 
-  margin-top: 8px;
+  a {
+    color: $blue;
+    font-weight: 600;
+    cursor: pointer;
+  }
+}
+
+.el-form-item__content .sd-form-item--more:first-child {
+  margin-top: 0;
+}
+
+// ElCheckboxGroup、ElRadioGroup 单行显示选项， 附带 class="option-group--block"
+.option-group--block {
+  .el-radio,
+  .el-checkbox {
+    display: flex;
+    align-items: center;
+    white-space: normal;
+    margin-right: 0;
+    padding: 8px 16px;
+    box-shadow: inset 0 -1px 0 0 #EEE;
+
+    &:hover {
+      background: rgba(0, 64, 255, .08);
+    }
+  }
+
+  .el-radio__input,
+  .el-checkbox__input {
+    line-height: 0; // 纵向居中 hack
+  }
 }

@@ -28,6 +28,7 @@ import {
   OptionGroup,
   Pagination,
   Popover,
+  Popconfirm,
   Radio,
   RadioGroup,
   RadioButton,
@@ -66,6 +67,7 @@ Vue.use(Option);
 Vue.use(OptionGroup);
 Vue.use(Pagination);
 Vue.use(Popover);
+Vue.use(Popconfirm);
 Vue.use(Radio);
 Vue.use(RadioGroup);
 Vue.use(RadioButton);

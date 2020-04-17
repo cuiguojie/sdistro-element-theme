@@ -10,6 +10,8 @@ $--font-path: '~element-ui/lib/theme-chalk/fonts';
 }
 
 @import "./color.scss";
+
+@import "./button.scss";
 @import "./icon.scss";
 @import "./carousel.scss";
 @import "./cascader.scss";
@@ -25,5 +27,6 @@ $--font-path: '~element-ui/lib/theme-chalk/fonts';
 @import "./form.scss";
 @import "./tabs.scss";
 @import "./pager.scss";
+@import "./popconfirm.scss";
 @import "./drawer.scss";
 @import "./tag.scss";

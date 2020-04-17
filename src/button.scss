@@ -1,1 +1,40 @@
-$blue: #0040FF;
+.el-button {
+  padding: 0 31px; // 设计是 32，但是button 元素即使设置 border-box 宽度计算也是标准盒模型
+  height: 48px;
+  line-height: 46px;
+  font-size: 18px;
+  color: $blue;
+  border-color: $blue;
+  border-radius: 8px;
+
+  &:hover,
+  &:focus {
+    color: $blue;
+    background: none;
+    border-color: $blue;
+  }
+}
+
+.el-button--primary {
+  background: $blue;
+  color: #FFF;
+
+  &:hover,
+  &:focus {
+    color: #FFF;
+    background: $blue;
+    border-color: $blue;
+  }
+}
+
+.el-button--mini {
+  padding: 0 15px;
+  height: 32px;
+  line-height: 30px;
+  font-size: 14px;
+  border-radius: 6px;
+}
+
+.el-button + .el-button {
+  margin-left: 16px;
+}

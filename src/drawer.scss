@@ -6,5 +6,44 @@
     line-height: 36px;
     font-size: 24px;
     color: #333;
+    outline: none;
   }
+}
+
+// TODO
+// 自定义内部元素，之后考虑当做独立组件发布
+.sd-drawer__container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.sd-drawer__content {
+  flex: 1;
+  padding: 0 40px;
+  overflow-y: auto;
+}
+
+.sd-drawer__footer {
+  position: relative;
+  padding: 16px 24px;
+  height: 48px;
+  background: #FFFFFF;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, .16);
+
+  &.align--center {
+    text-align: center;
+  }
+}
+
+.sd-drawer__footer--left {
+  float: left;
+}
+
+.sd-drawer__footer--right {
+  float: right;
+}
+
+.el-drawer__body {
+  overflow: hidden;
 }
