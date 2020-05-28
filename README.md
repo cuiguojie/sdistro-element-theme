@@ -2,7 +2,7 @@
 
 自定义 ElementUI 样式。仅提供 SCSS 文件及相关资源；使用 `storybook` 做控件样式预览
 
-依赖版本： `ElementUI` 2.13.0
+目前依赖版本： `ElementUI` 2.13.2
 
 ## 本地预览
 
@@ -18,6 +18,8 @@ npm run storybook:build
 
 ## 组件列表
 
+- [x] Button
+- [x] Cascader
 - [x] Checkbox
 - [x] CheckboxGroup
 - [x] Collapse
@@ -28,6 +30,7 @@ npm run storybook:build
 - [x] Form
 - [x] Input
 - [x] Pager
+- [x] Popconfirm
 - [x] Popover
 - [x] Radio
 - [x] RadioGroup

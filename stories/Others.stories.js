@@ -42,8 +42,6 @@ storiesOf('Others', module)
         <div>
           <ElPopconfirm
             title="确认重置？"
-            cancel-button-type=""
-            cancel-button-size=""
             placement="bottom-start"
             :visible-arrow="false"
             :hide-icon="true"

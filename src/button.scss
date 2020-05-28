@@ -13,28 +13,32 @@
     background: none;
     border-color: $blue;
   }
-}
 
-.el-button--primary {
-  background: $blue;
-  color: #FFF;
-
-  &:hover,
-  &:focus {
-    color: #FFF;
+  &--primary {
     background: $blue;
-    border-color: $blue;
+    color: #FFF;
+
+    &:hover,
+    &:focus {
+      color: #FFF;
+      background: $blue;
+      border-color: $blue;
+    }
+  }
+
+  // el-popconfirm 使用 mini
+  // el-message-box 使用 small，两者样式统一掉
+  &--small,
+  &--mini {
+    padding: 0 15px;
+    height: 32px;
+    line-height: 30px;
+    font-size: 14px;
+    border-radius: 6px;
+  }
+
+  & + .el-button {
+    margin-left: 16px;
   }
 }
 
-.el-button--mini {
-  padding: 0 15px;
-  height: 32px;
-  line-height: 30px;
-  font-size: 14px;
-  border-radius: 6px;
-}
-
-.el-button + .el-button {
-  margin-left: 16px;
-}
