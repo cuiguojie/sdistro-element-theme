@@ -619,6 +619,7 @@ storiesOf('Form', module)
             ],
           },
         ],
+        value: [null, null],
       };
     },
     template: `<ElForm label-position="top">
