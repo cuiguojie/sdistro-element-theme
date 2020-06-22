@@ -81,6 +81,12 @@
   padding-right: 16px;
 }
 
+// 必须 first-child 覆写
+// 默认未选状态，只生成了父级的 el-cascader-menu，所以会被 last-child 作用到
+.el-cascader-menu:first-child .el-cascader-node {
+  padding-left: 16px;
+}
+
 .el-cascader-node__label {
   padding-left: 0;
 }
