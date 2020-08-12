@@ -680,6 +680,20 @@ storiesOf('Form', module)
             :clearable="false"
           />
         </ElFormItem>
+
+        <ElFormItem label="选择月份范围">
+          <ElDatePicker
+            v-model="monthrange"
+            type="monthrange"
+            unlink-panels
+            range-separator="～"
+            prefix-icon="el-icon-caret-bottom"
+            start-placeholder="开始日期"
+            end-placeholder="结束日期"
+            :editable="false"
+            :clearable="false"
+          />
+        </ElFormItem>
       </ElForm>
     `,
   }))
